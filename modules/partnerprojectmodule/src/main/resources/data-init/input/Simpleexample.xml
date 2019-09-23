@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Simple>
+	<Details email="p.l">
+		<firstName>Parvej</firstName>
+		<lastName>Leelgar</lastName>
+		<phoneNumber>9861441414</phoneNumber>
+		<insidefirst createname="parvejleelgar"></insidefirst>
+		<insidesecond>
+			<insidesecond1>hiii</insidesecond1>
+		</insidesecond>
+	</Details>
+	
+		<Details email="p.l">
+		<firstName>Parvej</firstName>
+		<lastName>Leelgar</lastName>
+		<phoneNumber>9861441414</phoneNumber>
+		<insidefirst createname="parvejleelgar"></insidefirst>
+	</Details>
+</Simple>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+  http://axelor.com/xml/ns/domain-models/domain-models_5.0.xsd">
+
+	<module name="partner" package="com.axelor.partner.db"/>
+	
+	<entity name="Simpleexample" sequential="true" cachable="true">
+		<string name="firstName"/>
+		<string name="lastName"/>
+		<string name="phoneNumber"/>
+		<string name="email"/>
+		<string name="createname"/>
+		<string name="createname1"/>
+	</entity>
+	
+</domain-models>

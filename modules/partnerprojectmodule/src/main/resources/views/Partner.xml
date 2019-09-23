@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+
+	<selection name="genderSelection">
+		<option value="male">Male</option>
+		<option value="female">Female</option>
+	</selection>
+	
+	<grid name="partner-grid" title="Partners"
+    	model="com.axelor.partner.db.Partner"
+    	editable="false"
+    	edit-icon="false"
+    	orderBy="partnerId"
+    	customSearch="false"
+    	freeSearch="none"
+    	canMove="true"
+    > 
+     	
+  		<toolbar>
+    		<button name="btnGreetAll1" title="Greet1" onClick="action-partner-method-email-on-save"/>
+    		<button name="btnExportCsv" title="Export" onClick="action-partner-method-grid-on-click"/>
+    		<button name="report" title="Report" icon="fa-print" onClick="action-partner-method-report-on-click,action-report-invoice-grid"/>
+  		</toolbar>
+  
+  		<menubar>
+    		<menu title="Actions">
+      			<item title="Action 1" action="action-partner-method-email-on-save" />
+      			<item title="Action 2" action="action-partner-method-email-on-save" />
+    		</menu>
+  		</menubar>
+  
+  		<!-- <button name="gridbutton" title="gene" icon="fa-check" onClick="action-partner-method-email-on-save"/> --> 
+    
+  		<field name="partnerId" title="Partner Id"/>
+  
+  		<field name="fullName" title="Full Name">
+  			<hilite  color="danger" strong="true" if="$contains(fullName, 'parvej')"/>
+  		</field>
+	
+	</grid>
+
+  	<form name="partner-form" title="Partner"
+    	model="com.axelor.partner.db.Partner"
+    	onSave="action-partner-condition-on-save,action-partner-method-email-on-save" 
+    	canNew="true"
+    	canEdit="true"
+    	canDelete="true"
+    	canCopy="true"
+    	canSave="true"
+    	canAttach="true"
+    	width="large"
+    > 
+    	<toolbar>
+    		<button name="report" title="Report" icon="fa-print" onClick="action-report-invoice"/>
+    	</toolbar>
+    	
+    	<panel name="fullnamePanel" title="Overview" 
+    		itemSpan="6" 
+    		hidden="false" 
+    		hideIf="false" 
+    		readonly="false" 
+    		readonlyIf="false" 
+    		showIf="true" 
+    		showFrame="true" 
+    		showTitle="true" 
+    		stacked="false"
+    	> 
+      		<button name="export-st-btn" title="Export ST" onClick="action-export-partner-on-click"/>
+      		
+      		<button name="export-csv-btn" title="Export CSV" onClick="action-method-partner-on-click"/>
+      		
+      		<button name="import-csv-btn" title="Import CSV" onClick="action-partner-method-csv-on-click"/>
+	  		
+	  		<field name="metaFile" widget="binary-link" readonly="true"/>
+      		
+      		<field name="fullName" readonly="false">
+        		<editor> 
+          			<field name="firstName" colSpan="3"/>
+          			<field name="lastName" colSpan="4"/>
+        		</editor>
+      		</field>
+       	
+      		<field name="dateOfBirth">
+       			<!--  <hilite color="danger" strong="true" if="$moment().diff(dateOfBirth, 'days') &gt; today"/> -->
+      		</field>
+       	
+      		<!-- <field name="temp" title="temporary"/> -->
+      		
+      		<field name="gender" selection="genderSelection" />
+ 		</panel>
+
+	  	<panel colSpan="4">
+        	<field name="image" showTitle="false" colSpan="12"/>
+      	</panel>
+      	
+      	<panel>
+      		<field name="metaFileImage" title="Image" widget="image"/>
+      	</panel>
+      	
+ 		<panel name="emailPanel" title="Email" attached="true">
+        	<!-- <menu>
+        			<item action="action-partner-method-email-on-save" title="I1"/>
+        			<item action="action-partner-method-email-on-save" title="I2"/>
+        	</menu> -->
+        
+   			<!-- <label title="hello brother"/> -->
+        
+        	<field name="emailoto" title="Email" form-view="email-form" canNew="true">
+        		 <!-- <viewer><![CDATA[ 
+        			<a href="mailto:{{record.emailoto}}">{{record.emailoto}}</a>
+        		]]></viewer> -->
+        	</field>
+        
+        	<!-- <field name="$dummyfield" title="dummy" type="integer" min="2" max="45" target="com.axelor.partner.db.Partner"/> -->
+        
+			<!-- <static>hi its me prajjwal</static> -->
+		
+			<!-- <help>hi it is a </help> -->
+		
+			<!-- <button name="email-button" title="Generate Email" onClick="action-partner-method-email-on-save"/> -->
+		
+			<!-- <button-group name="groupbutton" title="Group of button">
+				<button name="he" prompt="are yo" title="ge" onClick="action-partner-method-email-on-save"/>
+				<button name="he1" prompt="are yosdas" title="ge1" onClick="action-partner-method-email-on-save"/>
+			</button-group> -->
+    	</panel>
+    
+    	<panel-related field="addressotm" name="addressPanel" title="Address" form-view="address-form" editable="true" orderBy="zip"> 
+  	  		<field name="street" />
+      		<field name="area" />
+      		<field name="state" />
+      		<field name="zip" />
+      		<field name="city" />
+      		<field name="country" />
+    	</panel-related>
+    
+    	<panel-related field="phoneList" title="PhoneNumber" form-view="phone-form">
+    		<field name="phoneNumber"/>
+    	</panel-related>
+    	
+    	<!-- <panel>
+    		<field name="phoneList" widget="TagSelect" canNew="true" />
+    	</panel> -->
+    	    
+    	<panel-related field="companymtm" title="Company" form-view="company-form"> 
+        	<field name="companyName"/>
+    	</panel-related>
+    
+    	<!-- <panel sidebar="true">
+    		<field name="companymtm"  widget="TagSelect" canNew="false" target-name="companyName"/>
+    	</panel> --> 	
+    
+    	<panel> 
+      		<field name="createdOn"/>
+      		<field name="createdBy"/>
+      		<field name="updatedOn"/>
+      		<field name="updatedBy"/>
+    	</panel>
+    	
+    	<panel-mail>
+    		 <mail-messages limit="4" />
+    	</panel-mail>
+    
+    	<!-- <panel-include view="email-form" from="partnerprojectmodule"/> -->
+    
+    	<!-- <panel-dashlet action="menu.partner.address" name="addressdashletpanel" title="All Addresses" canSearch="true" height="200px" /> -->
+    
+  		<!-- <panel-tabs>
+  			<panel title="Notes"/>
+  			<panel title="Notes1"/>
+ 		</panel-tabs> -->
+ 
+ 		<!-- <panel-stack>
+  			<panel title="Page 1" name="fullnamePanel"/>
+  			<panel title="Page 2" name="emailPanel"/>
+  			<panel title="Page 3" name="addressPanel"/>
+		</panel-stack> -->
+
+    </form>
+    
+    <form name="tree-form" title="Tree View"
+		model="com.axelor.partner.db.Partner">
+		<panel-dashlet action="action.partner.tree" />
+	</form>
+  
+  	<action-attrs name="action-partner-attrs-last-name-on-change">
+  		<attribute name="readonly" for="lastName" expr="eval: false"/>
+  	</action-attrs>
+  
+  	<action-attrs name="action-partner-attrs-temp-on-change">
+  		<attribute name="required" for="temp" expr="eval: true"/>
+  	</action-attrs>
+  
+  	<action-attrs name="action-partner-attrs-date-of-birth-on-change">
+  		<attribute name="readonly" for="dateOfBirth" expr="eval:__date__"/>
+  	</action-attrs>
+  
+  	<action-attrs name="action-partner-attrs-first-name-on-new">
+  		<attribute name="domain" for="emailoto" expr="self.emailstr like '%gmail.com%'"/>	   
+  	</action-attrs>
+  
+  	<action-validate name="action-partner-validate-date-of-birth-on-save">
+		<!-- <error message="Your birthday cannot exceed from today." 
+				if="dateOfBirth &gt; __date__" action="action-partner-attrs-date-of-birth-on-validation"/> -->
+		<!-- <alert message="no you an" if="dateOfBirth &gt; __date__"/> -->
+ 		<!-- <info message="this is info" if="dateOfBirth &gt; __date__"/>  -->
+ 		<notify message="this is notify" if="dateOfBirth &gt; __date__"/>
+  	</action-validate>
+  
+  	<!-- <action-attrs name="action-partner-attrs-date-of-birth-on-validation">
+  		<attribute name="value:set" for="ad" expr="eval: __date__"/>
+  	</action-attrs> -->
+  
+  	<action-record name="action-partner-record-date-of-birth-on-new" model="com.axelor.partner.db.Partner">
+  		<field name="dateOfBirth" expr="eval: __date__"/>
+  		<field name="firstName" expr="parvej"/>
+  		<field name="emailoto" expr="action: action-partner-method-email-on-save"/>
+  	</action-record>
+ 
+  	<action-method name="action-partner-method-email-on-save">
+  		<call class="com.axelor.partner.web.PartnerController" method="checkemail"/>
+  	</action-method>
+  
+  	<action-method name="action-method-partner-on-click">
+  		<call class="com.axelor.partner.web.PartnerController" method="dataExport"/>
+  	</action-method>
+  	
+  	<action-method name="action-partner-method-csv-on-click">
+  		<call class="com.axelor.partner.web.PartnerController" method="dataImport"/>
+  	</action-method>
+  	
+  	<action-method name="action-partner-method-grid-on-click">
+  		<call class="com.axelor.partner.web.PartnerController" method="dataExportGrid"/>
+  	</action-method>
+    
+  	<action-condition name="action-partner-condition-on-save">
+  		<!-- <check field="temp"/> -->
+  		<check field="dateOfBirth" if="dateOfBirth &gt; __date__" error="this is invalid date"/>
+  	</action-condition>
+  
+  	<action-export name="action-export-partner-on-click" download="true">
+  		<export name="${firstName}.xml" template="data-export/export-partner-details.st"/>
+  	</action-export>
+  
+	<!-- <action-group name="action-partner-group-on-new">
+  		<action name="action-partner-attrs-date-of-birth-on-validation"/>
+  		<action name="action-partner-attrs-first-name-on-new"/>
+	</action-group> -->
+  
+  	<action-attrs name="action-partner-attrs-on-new">
+  		<attribute name="value" for="dateOfBirth" expr="eval: __date__"/>
+  	</action-attrs>
+  	
+  	<action-report name="action-report-invoice"
+    	design="partner.rptdesign"
+    	output="invoice-${date}${time}"
+    	format="pdf">
+    	<!-- <param name="some" expr="eval: expression" if="confirmed"/> -->
+    	<param name="id" expr="eval: id" />  <!-- "eval: id" -->
+	</action-report>
+	
+	<action-report name="action-report-invoice-grid" 
+	design="partnerGrid.rptdesign"
+	output="invoicegrid-${date}${time}"
+	format="pdf"
+	>
+		<!--  <param name="partnerId" expr="call:com.axelor.partner.web.PartnerController:report"/> -->
+		<param name="partnerId" expr="eval: partnerId"/>
+	</action-report>
+	
+	<action-method name="action-partner-method-report-on-click">
+		<call class="com.axelor.partner.web.PartnerController" method="report"/>
+	</action-method>
+
+  	<cards name="partner-cards" title="Partners" model="com.axelor.partner.db.Partner" orderBy="fullName">
+    	<field name="fullName" />
+    	<field name="emailoto" />
+   		<field name="address" />
+    	<field name="hasImage" />
+    	<template><![CDATA[
+      		<div class="span4 card-image">
+        		<img ng-if="hasImage" ng-src="{{$image(null, 'image')}}">
+        		<img ng-if="!hasImage" src="img/user.png">
+        		<strong>{{fullName}}</strong>
+      		</div>
+      		<div class="span8">
+      			<strong>{{emailoto.emailstr}}</strong>
+        		<address>
+          			<strong>{{address.street}} {{address.area}}</strong><br>
+          			{{address.city}}<span ng-if="address.state">, {{address.state}}</span><span ng-if="address.zip"> - {{address.zip}}</span><br>
+          			{{address.country}}<br>
+        		</address>
+      		</div>
+    	]]></template>
+  	</cards>
+  	
+  	<tree name="partner-tree" title="Tree View">
+  		<column name="fullName" title="FullName" type="string"/>
+  		<column name="phoneNumber" title="Phone" type="string"/>
+  		<!-- <column name="partnerId" title="PartnerId" type="string"/>
+  		<column name="firstName" title="FirstName" type="string"/>
+  		<column name="lastName" title="LastName" type="string"/>
+  		<column name="dateOfBirth" title="DOB" type="date"/>
+  		<column name="email" title="EmailId" type="string"/> -->
+
+  		<node model="com.axelor.partner.db.Partner">
+  			<field name="fullName" as="fullName"/>
+  			<!-- <field name="firstName" as="firstName"/>
+  			<field name="partnerId" as="partnerId"/>
+  			<field name="lastName" as="lastName"/>
+  			<field name="dateOfBirth" as="dateOfBirth"/>
+  			<field name="emailoto.emailstr" as="email"/> -->
+  		</node>
+  		
+  		<node model="com.axelor.partner.db.Phonecsv" parent="phonecsv" draggable="true" onClick="partner.details">
+  			<field name="phoneNumber" as="phoneNumber"/>
+  		</node>
+  	
+  	</tree>
+  	
+  	<action-attrs name="partner.details">
+    	<attribute for="phoneList" name="value:add" expr="eval: phoneNumber"/>
+  	</action-attrs>
+  	
+  
+</object-views>

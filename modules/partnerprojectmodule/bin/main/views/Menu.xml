@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+
+  <menuitem name="menu-partner-book"
+    title="Partner Book" /> 
+
+  <menuitem name="menu-partner-friends"
+    parent="menu-partner-book"
+    title="All Partner"
+    action="partner.all"/>   
+
+  <action-view name="partner.all"
+    title="Partners"
+    model="com.axelor.partner.db.Partner"> 
+    <view type="grid" name="partner-grid"/>
+    <view type="cards" name="partner-cards"/> 
+    <view type="form" name="partner-form"/>
+    <context name="json-enhance" expr="true"/>
+  </action-view>
+  
+  <menuitem title="Emails" name="menu-partner-emails" parent="menu-partner-book"
+  	action="menu.partner.emails"/>
+  	
+  	<action-view name="menu.partner.emails" title="Emails" model="com.axelor.partner.db.Email">
+  		<view type="grid" name="email-grid"/>
+  		<view type="form" name="email-form"/>
+  	</action-view>
+  	
+  	
+  	<menuitem title="Address" name="menu-partner-address" parent="menu-partner-book"
+  	action="menu.partner.address"/>
+  	
+  	<action-view name="menu.partner.address" title="Address" model="com.axelor.partner.db.Address">
+  		<view type="grid" name="address-grid"/>
+  		<view type="form" name="address-form"/>
+  	</action-view>
+  	
+  	<menuitem title="Company" name="menu-partner-company" parent="menu-partner-book"
+  	action="menu.partner.company"/>
+  	
+  	<action-view name="menu.partner.company" title="Company" model="com.axelor.partner.db.Company">
+  		<view type="grid" name="company-grid"/>
+  		<view type="form" name="company-form"/>
+  		<view-param name="details-view" value="true" />
+  	</action-view>
+  	
+  	<menuitem title="Csv" name="menu-partner-csv" parent="menu-partner-book"
+  	action="menu.partner.csv"/>
+  	
+  	<action-view name="menu.partner.csv" title="CSV" model="com.axelor.partner.db.Csvfile">
+  		<view type="grid" name="csv-grid"/>
+  	</action-view>
+  	
+  	<menuitem title="Xml" name="menu-partner-xml" parent="menu-partner-book"
+  	action="menu.partner.xml"/>
+  	
+  	<!-- <action-view name="menu.partner.xml" title="Xml" model="com.axelor.partner.db.Simpleexample">
+  		<view type="grid" name="xml-grid"/>
+  	</action-view> -->
+  	
+  	<action-view name="menu.partner.xml" title="Xml" model="com.axelor.partner.db.XmlFile">
+  		<view type="grid" name="xml1-grid"/>
+  	</action-view>
+  	
+  	<menuitem title="Tree View" name="menu-partner-treeview" parent="menu-partner-book"
+  	action="action.partner.tree"/>
+  	  	
+  	<action-view name="action.partner.tree" title="Tree View">
+  		<view type="tree" name="partner-tree"/>
+  	</action-view>
+  	
+  	<menuitem title="Kanban View" name="menu-kanban" parent="menu-partner-book"
+  		action="menu.kanban"/>
+  		
+  		<action-view name="menu.kanban" title="Kanban view" model="com.axelor.partner.db.Kanban">
+  			<view type="kanban" name="kanban-view"/>
+  			<view type="form" name="kanban-form"/>
+  		</action-view>
+  	
+
+
+</object-views>
+
+

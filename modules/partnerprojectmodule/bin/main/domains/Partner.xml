@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+  http://axelor.com/xml/ns/domain-models/domain-models_5.0.xsd">
+
+  <module name="partner" package="com.axelor.partner.db"/>
+  <sequence name="id.partner.seq" initial="1" increment="1" padding="3" prefix="P"/>
+  <entity name="Partner" sequential="true" cachable="true">
+    <string name ="partnerId" sequence="id.partner.seq" />
+    <string name="firstName" required="true" /> 
+    <string name="lastName" required="true" />
+	
+    <string name="fullName" namecolumn="true" search="firstName,lastName"> 
+    <![CDATA[
+    if (firstName == null && lastName == null) {
+        return null;
+    }
+    return firstName + " " + lastName;
+    ]]></string>
+
+	<date name="dateOfBirth"/>
+	<string name="temp" />
+	<string name="gender" selection="genderSelection"></string>
+	
+	<binary name="image" title="Photo" help="Max size 4MB" image="true"></binary>
+	
+    <one-to-one name="emailoto" ref="com.axelor.partner.db.Email" unique="true"/> 
+    
+     <one-to-many name="addressotm" ref="com.axelor.partner.db.Address" mappedBy="addressmto" />
+     
+     <one-to-many name="phoneList" ref="com.axelor.partner.db.Phonecsv" mappedBy="phonecsv"/>
+     
+     <many-to-many name="companymtm" ref="com.axelor.partner.db.Company" />
+    <many-to-one name="metaFile" ref="com.axelor.meta.db.MetaFile" title="Exported Csv" readonly="false"/>
+    <many-to-one name="metaFileImage" ref="com.axelor.meta.db.MetaFile" />
+ 
+    <finder-method name="findByName" using="fullName" /> 
+    
+    <!-- <track>
+		<field name="name" />
+		<field name="createDate" on="CREATE" />
+		<field name="customer" />
+		<field name="confirmDate" on="UPDATE" if="status == 'confirmed'" />
+		<field name="totalAmount" />
+		<message if="true" on="CREATE">Order created.</message>
+		<message if="status == 'confirmed'" on="UPDATE">Order confirmed.</message>
+		<message if="status == 'draft'" tag="important">Draft</message>
+		<message if="status == 'confirmed'" tag="success" fields="status">Confirmed</message>
+	</track> -->
+	
+	<track>
+		<field name="firstName" on="UPDATE"/>
+		<field name="lastName" on="UPDATE"/>
+		<field name="dateOfBirth" on="UPDATE" if="dateOfBirth &lt; __date__"/>
+		<message if="true" on="UPDATE">Changed</message>
+	</track>
+    
+  </entity>
+</domain-models>
+
+

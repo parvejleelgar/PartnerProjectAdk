@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<csv-inputs xmlns="http://axelor.com/xml/ns/data-import"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://axelor.com/xml/ns/data-import
+ http://axelor.com/xml/ns/data-import/data-import_5.0.xsd">
+ 
+ 	<!-- <input file="Company.csv" type="com.axelor.partner.db.Company"/> -->
+<!-- 	<input file="PartnerPhoneNumber.csv" type="com.axelor.partner.db.Phonecsv"/> -->
+	<input file="Phone.csv" type="com.axelor.partner.db.Phonecsv">
+		
+	</input>
+	<input file="Partner.csv" type="com.axelor.partner.db.Partner">
+ 		<bind to="firstName" column="firstName"/>
+ 		<bind to="lastName" column="firstname"/>
+ 		<bind to="dateOfBirth" column="dateOfBirth"/>
+		<bind to="emailoto" search="self.emailstr = :email" update="false">
+		   <bind to="emailstr" column="email"/>
+		</bind>
+		<!-- <bind to="phoneList" column="phone" search="self.code in :phone" eval="phone.split('\\|') as List"/> -->
+			
+			<bind to="phoneList" search="self.name = :firstName" update="false">
+				<bind to="phoneNumber" column="phoneNumbercsv"></bind>
+			</bind>
+		
+<!-- 	<bind to="companycsvmtm" column="companyNewName" search="self.code in :companyNewName" eval="companyNewName.split('\\|') as List"/> -->
+	</input> 
+	
+	
+    
+ </csv-inputs>

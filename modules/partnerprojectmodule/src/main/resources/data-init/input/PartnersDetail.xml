@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PartnersDetail>
+	<Detail>
+		<name>Parvej</name>
+		<partnerEmail>parvej@gmail.com</partnerEmail>
+		<phoneNumbers>
+			<phone>8561923387</phone>
+			<phone>8561923388</phone>
+			<phone>8561923389</phone>
+		</phoneNumbers>
+		<companies>
+			<companyName>Axelor</companyName>
+			<companyName>CashPoint</companyName>
+			<companyName>effiel</companyName>
+		</companies>
+	</Detail>
+	
+	<Detail>
+		<name>Prajjwal</name>
+		<partnerEmail>prajjwal@gmail.com</partnerEmail>
+		<phoneNumbers>
+			<phone>8561923387</phone>
+			<phone>8561923382</phone>
+		</phoneNumbers>
+		<companies>
+			<companyName>Axelor</companyName>
+			<companyName>CashPoint</companyName>
+			<companyName>effiel</companyName>
+			<companyName>effieltower</companyName>
+		</companies>
+	</Detail>
+</PartnersDetail>

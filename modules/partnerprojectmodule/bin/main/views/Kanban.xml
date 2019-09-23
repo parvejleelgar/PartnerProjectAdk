@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.1.xsd">
+	<!-- <selection id="product.color.selection.custom" name="product.color.selection">
+		<option value="black">Black</option>
+	</selection> -->
+
+	<selection name="project.task.state.selection">
+		<option value="todo">To-do</option>
+		<option value="progress">In progress</option>
+		<option value="complete">Completed</option>
+	</selection>
+
+	<form name="kanban-form" title="Project Task" model="com.axelor.partner.db.Kanban">
+		<panel title="Overview">
+			<field name="name" />
+			<field name="notes" />
+			<field name="state" widget="NavSelect" selection="project.task.state.selection" />
+			<field name="startDate" />
+			<field name="endDate" />
+			<!-- <field name="progress" widget="Progress" /> -->
+		</panel>
+
+	</form>
+
+	<kanban name="kanban-view" title="Project Tasks" model="com.axelor.partner.db.Kanban"
+		columnBy="state" sequenceBy="progress" limit="10">
+		<field name="name" />
+		<field name="notes" />
+		<field name="state" widget="SuggestBox" selection="project.task.state.selection" />
+		<!-- <field name="progress" /> -->
+		<field name="startDate" />
+		<field name="endDate" />
+
+		<!-- <hilite color="danger" if="progress == 0" />
+		<hilite color="success" if="progress == 100" />
+		<hilite color="info" if="progress >= 50" />
+		<hilite color="warning" if="progress > 0" /> -->
+		<template><![CDATA[
+   <h4>{{name}}</h4>
+   <img ng-if="user" ng-src="{{$image('name', 'image')}}">
+   <div class="card-body">{{notes}}</div>
+   <div class="card-footer">
+     <i class='fa fa-clock-o'></i> <span>{{startDate|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+   </div>
+   ]]></template>
+	</kanban>
+</object-views>

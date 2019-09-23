@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+  http://axelor.com/xml/ns/domain-models/domain-models_5.0.xsd">
+
+	<module name="partner" package="com.axelor.partner.db"/>
+
+<entity name="Csvfile">
+	<string name="name"/>
+<!-- 	<one-to-one name="emailotocsv" ref="com.axelor.partner.db.Email" unique="true"/>  -->
+	
+<!-- 	<one-to-many name="phonecsvotm" ref="com.axelor.partner.db.Phonecsv" mappedBy="phonecsvmto"/> -->
+	
+<!-- 	<many-to-one name="companycsvmto" ref="com.axelor.partner.db.Company" ></many-to-one> -->
+	
+<!-- 		<many-to-many name="companycsvmtm" ref="com.axelor.partner.db.Company"/> -->
+	
+</entity>
+
+</domain-models>
+

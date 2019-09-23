@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+
+<!-- 	<grid name="csv-grid" title="Csv" model="com.axelor.partner.db.Csvfile">
+	  <field name="name" />
+	  <field name="phonecsvotm"/>
+	</grid> -->
+	
+	<grid name="csv-grid" title="Csv" model="com.axelor.partner.db.Csvfile">
+	  <field name="name" />
+	  <field name="companycsvmtm"/>
+	</grid>
+
+<!--   <form name="csv-form" title="Csv" model="com.axelor.partner.db.Csvfile">
+    <panel-related title="Csv" field="phonecsvmto" form-view="phoneNumberForm" name="phonenumberpanel" editable="true">
+    	<field name="phonenumber"></field>
+    </panel-related>
+  </form>
+  
+  <form model="com.axelor.partner.db.Csvfile" title="PhoneNumber" name="phoneNumberForm">
+  	<panel title="PhoneNumberPanel">
+  		<field name="phonenumber"></field>
+   	</panel>
+  </form> -->
+  
+</object-views>

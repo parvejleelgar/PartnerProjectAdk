@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.1.xsd">
+
+	<module name="partner" package="com.axelor.partner.db" />
+
+	<entity name="Kanban">
+		<string name="name" title="Task Summary" />
+		<string name="notes" multiline="true" />
+		<string name="state" selection="project.task.state.selection" />
+		<datetime name="startDate" />
+		<datetime name="endDate" />
+
+		<!-- <integer name="progress">
+   <![CDATA[
+     double result = 0.0, duration = 0.0;
+   if (startDate == null || endDate == null) {
+     return 0;
+   }
+
+   duration = java.time.temporal.ChronoUnit.HOURS.between(startDate, endDate);
+   result = Math.min(100.0, ((result / duration) * 100));
+   return (int) Math.round(result);
+   ]]>
+		</integer> -->
+
+	</entity>
+</domain-models>
